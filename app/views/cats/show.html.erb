@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Feed:</strong>
+  <%= @cat.feed_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @cat.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @cat.address %>
+</p>
+
+<%= link_to 'Edit', edit_cat_path(@cat) %> |
+<%= link_to 'Back', cats_path %>

@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cats</h1>
+
+<p>
+<%= form_with url:cats_path, method:"get",local: :true do |f| %>
+  <%= f.text_field :name_key %>
+  <%= f.submit "検索" %>
+  <%= link_to "Clear", cats_path %>
+<% end %>
+
+
+
+
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Feed</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cats.each do |cat| %>
+      <tr>
+        <td><%= cat.feed_id %></td>
+        <td><%= cat.name %></td>
+        <td><%= cat.address %></td>
+        <td><%= cat.feed.name %></td>
+        <td><%= link_to 'Show', cat %></td>
+        <td><%= link_to 'Edit', edit_cat_path(cat) %></td>
+        <td><%= link_to 'Destroy', cat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cat', new_cat_path %>
+<%= link_to "Show Feeds", feeds_path %>
