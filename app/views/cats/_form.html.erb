@@ -1,4 +1,5 @@
-<%= form_for(cat) do |f| %>
+
+<%= form_for(cat, html: {class: 'form-horizontal', role: 'form'}) do |f| %>
   <% if cat.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(cat.errors.count, "error") %> prohibited this cat from being saved:</h2>
@@ -11,24 +12,34 @@
     </div>
   <% end %>
 
-
-
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <div class="form-group">
+    <%= f.label :name, class:"col-sm-1 control-label" %>
+    <div class="col-sm-11">
+      <%= f.text_field :name %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :feed_id %>
-    <%= f.select :feed_id, Feed.all.map{|f|[f.name, f.id]} %>
+
+  <div class='form-group'>
+    <%= f.label :feed_id, class: 'col-sm-1 control-label' %>
+    <div class='col-sm-11'>
+      <%= f.select :feed_id, Feed.all.map{|o| [o.name, o.id]} %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :address %>
-    <%= f.text_field :address %>
+  <div class='form-group'>
+    <%= f.label :address, class: 'col-sm-1 control-label' %>
+    <div class='col-sm-11'>
+      <%= f.text_field :address %>
+    </div>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <div class="form-group">
+      <div class="col-sm-offset-1 col-sm-11">
+        <%= f.submit  class:"btn btn-success"%>
+        <%= link_to 'Back', :back, class: 'btn btn-default' %>
+      </div>
+    </div>
   </div>
 <% end %>

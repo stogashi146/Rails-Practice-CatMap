@@ -1,0 +1,17 @@
+ja:
+  hello: "世界のみなさん、こんにちは"
+  wiztech: "ハローウィズテック"
+  cats: "猫リスト"
+  feed: "エサ"
+  name: "名前"
+  adress: "住所"
+
+activerecord:
+  models:
+    cat: "猫"
+
+  attributes:
+    cat:
+      feed_id: "エサ"
+      name: "名前"
+      address: "住所"

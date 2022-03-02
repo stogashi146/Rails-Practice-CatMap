@@ -1,39 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Cats</h1>
+<h1><%= t("cats") %></h1>
 
-<p>
-<%= form_with url:cats_path, method:"get",local: :true do |f| %>
-  <%= f.text_field :name_key %>
-  <%= f.submit "検索" %>
-  <%= link_to "Clear", cats_path %>
+<%= form_tag('/cats', method: 'get') do %>
+<%= label_tag(:name_key, 'Search name:') %>
+<%= text_field_tag(:name_key) %>
+<%= submit_tag('Search') %> <%= link_to 'Clear', cats_path %>
 <% end %>
 
+<br>
 
-
-
-</p>
-
-<table>
+<table class='table table-striped table-hover'>
   <thead>
     <tr>
-      <th>Feed</th>
-      <th>Name</th>
-      <th>Address</th>
-      <th colspan="3"></th>
+      <th><%= t("feed") %></th>
+      <th><%= t("name") %></th>
+      <th><%= t("adress") %></th>
     </tr>
   </thead>
 
   <tbody>
     <% @cats.each do |cat| %>
       <tr>
-        <td><%= cat.feed_id %></td>
-        <td><%= cat.name %></td>
-        <td><%= cat.address %></td>
-        <td><%= cat.feed.name %></td>
-        <td><%= link_to 'Show', cat %></td>
-        <td><%= link_to 'Edit', edit_cat_path(cat) %></td>
-        <td><%= link_to 'Destroy', cat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to cat.feed.name, cat, class: 'widelink' %></td>
+        <td><%= link_to cat.name, cat, class: 'widelink' %></td>
+        <td><%= link_to cat.address, cat, class: 'widelink' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -41,5 +32,5 @@
 
 <br>
 
-<%= link_to 'New Cat', new_cat_path %>
-<%= link_to "Show Feeds", feeds_path %>
+<%= link_to 'New Cat', new_cat_path, class: 'btn btn-primary'  %>
+<%= link_to 'Show Feeds', feeds_path %>
